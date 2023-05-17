@@ -66,7 +66,7 @@ export default function AddShedullesinfo() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/all">
-                  Schedules Info
+                  Shedulles Info
                 </a>
               </li>
             </ul>
@@ -79,10 +79,10 @@ export default function AddShedullesinfo() {
         <br></br>
         <div class="btn-toolbar justify-content-between">
         <div>
-        <h2>Add Schedule Details</h2>
+        <h2>Add Shedule Details</h2>
         </div>
           <div>
-        <a class="btn btn-primary" href="/all" role="button">My All Schedule</a>
+        <a class="btn btn-primary" href="/all" role="button">My All Shedule</a>
         </div>
        
         </div>
@@ -93,13 +93,13 @@ export default function AddShedullesinfo() {
               <form onSubmit={senddata}>
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="name">Schedule Contact</label>
+                    <label for="name">Shedule Contact</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Sctact"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule Contact "
+                      placeholder="Enter Shedule Contact "
                       onChange={(e) => {
                         setSctact(e.target.value);
                       }}
@@ -110,13 +110,13 @@ export default function AddShedullesinfo() {
 
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="name">Schedule Address</label>
+                    <label for="name">Shedule Address</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Sadres"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule Address"
+                      placeholder="Enter Shedule Address"
                       onChange={(e) => {
                         setSadres(e.target.value);
                       }}
@@ -127,13 +127,13 @@ export default function AddShedullesinfo() {
 
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="email">Schedule City</label>
+                    <label for="email">Shedule City</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Scity"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule City"
+                      placeholder="Enter Shedule City"
                       onChange={(e) => {
                         setScity(e.target.value);
                       }}
@@ -144,13 +144,13 @@ export default function AddShedullesinfo() {
 
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="nationality">Schedule Date</label>
+                    <label for="nationality">Shedule Date</label>
                     <input
                       type="date"
                       className="form-control"
                       id="Sdate"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule Date"
+                      placeholder="Enter Shedule Date"
                       onChange={(e) => {
                         setSdate(e.target.value);
                       }}

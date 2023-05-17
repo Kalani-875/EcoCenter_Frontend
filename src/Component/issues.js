@@ -1,11 +1,19 @@
-import emailjs from "react"
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBSelect,
+  MDBRadio,
+} from "mdb-react-ui-kit";
 
-function sendMail() {
-  var params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+function Issues(){
 
 return (
     <div>
@@ -42,7 +50,11 @@ return (
           </div>
         </div>
       </nav>
-      </div>
       
-)
+
+      
+    </div>
+  );
 }
+
+export default Issues;
