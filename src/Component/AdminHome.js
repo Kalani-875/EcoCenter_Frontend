@@ -29,7 +29,7 @@ function AdminHome () {
 
           
 
-      <div className="col" style={{ width: "800px" }} >
+      <div className="col" style={{ width: "800px" }}>
         {/* Add the desired width to the div */}
         <div className="card">
           <img
@@ -40,10 +40,10 @@ function AdminHome () {
             alt="..."
           />
               <div class="card-body">
-                <h5 class="card-title">Shedule Management</h5>
+                <h5 class="card-title">Schedule Management</h5>
                 <p class="card-text"></p>
               </div>
-              <a type="button" class="btn btn-success" href="/add">Add Shedule</a>
+              <a type="button" class="btn btn-success" href="/add">Add Schedule</a>
             </div>
           </div>
 
@@ -62,6 +62,3 @@ function AdminHome () {
     };
 
 export default AdminHome;
-
-
-
