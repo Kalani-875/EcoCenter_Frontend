@@ -107,7 +107,6 @@ function vehicleAdmin() {
                       id="vehicleNumber"
                       value={vehicleNumber}
                       onChange={(e) => setVehicleNumber(e.target.value)}
-                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -118,7 +117,6 @@ function vehicleAdmin() {
                       type="text"
                       className="form-control"
                       value={driverName}
-                      required
                       onChange={(e) => setDriverName(e.target.value)}
                     />
                   </div>
@@ -132,7 +130,6 @@ function vehicleAdmin() {
                       id="driverCity"
                       value={driverCity}
                       onChange={(e) => setDriverCity(e.target.value)}
-                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -145,7 +142,6 @@ function vehicleAdmin() {
                       id="telephoneNo"
                       value={telephoneNo}
                       onChange={(e) => setTelephoneNo(e.target.value)}
-                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -162,7 +158,6 @@ function vehicleAdmin() {
                       id="emailAddress"
                       value={emailAddress}
                       onChange={(e) => setEmailAddress(e.target.value)}
-                      required
                     />
                   </div>
                 </form>
