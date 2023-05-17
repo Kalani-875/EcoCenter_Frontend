@@ -1,7 +1,8 @@
 
 import {BrowserRouter as Router, Route , Routes} from "react-router-dom"
 import Cushome from "./Component/CHome/home";
-import AdminHome from "./Component/AdminHome";
+import Schedule from "./Component/Schedule";
+import VehicleAdmin from "./Component/Vehicle/vehicleAdmin";
 
 import CusPackages from './Component/CHome/packages';
 import Login from "./Component/auth/Login";
@@ -16,13 +17,15 @@ import issues from "./Component/issues";
 import Issues from "./Component/issues";
 
 
+
 function App() {
   return (
     <Router>
     <Routes>
     <Route path = "/" element ={<Cushome/>} />
     <Route path = "/add" element ={<AddShedullesinfo/>} />
-    <Route path = "/Home" element = {<AdminHome/>} />
+    <Route path = "/schedule" element = {<Schedule/>} />
+    <Route path = "/vehicleAdmin" element = {<VehicleAdmin/>} />
     <Route path = "/all" element = {<AllShedulles/>} />
     <Route path = "/vehicles" element = {<CusPackages/>} />
     <Route path = "/TransRepo" element = {<Transreport/>} />

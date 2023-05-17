@@ -81,7 +81,7 @@ function EditShedulles(_userId) {
           <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/Home">
+                <a className="nav-link" href="/Schedule">
                   Home <span className="sr-only">(current)</span>
                 </a>
               </li>
