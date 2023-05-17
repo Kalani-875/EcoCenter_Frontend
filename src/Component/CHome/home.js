@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios"; 
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 
-function home(){
+function Home(){
     return(
         
         <div>
@@ -234,4 +234,4 @@ function home(){
     )
 }
 
-export default home;
+export default Home;
