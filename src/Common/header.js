@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {
-  MDBBtn,
+  MDBFooter,
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBSelect,
-  MDBRadio,
+  MDBIcon,
 } from "mdb-react-ui-kit";
 
-function Issues(){
-
-return (
+function Header() {
+  return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -40,21 +34,33 @@ return (
                   Home
                 </a>
               </li>
+
               <li className="nav-item">
-                <a className="nav-link" href="/all">
-                  Shedulles Info
+                <a className="nav-link" href="/Schedule">
+                  Schedule
                 </a>
               </li>
-              
+              <li className="nav-item">
+                <a className="nav-link" href="/vehicleAdmin">
+                  Driver
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Blogs
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Donations
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
-      
-
-      
     </div>
   );
 }
 
-export default Issues;
+export default Header;
