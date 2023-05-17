@@ -83,7 +83,7 @@ export default function AllShedulles() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/add">
-                   Info
+                  Customer Info
                 </a>
               </li>
             </ul>
@@ -93,7 +93,7 @@ export default function AllShedulles() {
 
       <div className="container">
         <br />
-        <h2>Schedulles Management</h2>
+        <h2>Shedulles Management</h2>
         <br></br>
 
         <div class="input-group rounded">
@@ -116,7 +116,7 @@ export default function AllShedulles() {
 
         <button className="btn btn-success">
           <a href="/add" style={{ textDecoration: "none", color: "white" }}>
-            Add New Schedule
+            Add New Shedule
           </a>
         </button>
         <br></br>
@@ -135,11 +135,11 @@ export default function AllShedulles() {
         <table className="table table-success table-striped">
           <thead>
             <tr>
-              <th scope="col">Schedule id</th>
-              <th scope="col">Schedule Contact</th>
-              <th scope="col">Schedule Address</th>
-              <th scope="col">Schedule City</th>
-              <th scope="col">Schedule Date</th>
+              <th scope="col">Shedule id</th>
+              <th scope="col">Shedule Contact</th>
+              <th scope="col">Shedule Address</th>
+              <th scope="col">Shedule City</th>
+              <th scope="col">Shedule Date</th>
               <th scope="col">Action</th>
             </tr>
           </thead>

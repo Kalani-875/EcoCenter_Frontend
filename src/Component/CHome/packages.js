@@ -1,4 +1,4 @@
-import React ,{useState , useEffect, useReducer} from "react";
+import React , {useState , useEffect, useReducer} from "react";
 import axios from "axios";
 import _, { range, result } from "lodash";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ function Packages(){
             </ul>
             
           </div>
-          <a class="btn btn-secondary" href="/adminhome" role="button">Login</a>
+          <a class="btn btn-secondary" href="/" role="button">Login</a>
         </div>
       </nav>
 

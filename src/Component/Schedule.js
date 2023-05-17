@@ -1,21 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBSelect,
-  MDBRadio,
-} from "mdb-react-ui-kit";
+import React from "react";
 
-function Issues(){
+import { Card } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
-return (
+function Schedule() {
+  return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -40,21 +29,33 @@ return (
                   Home
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/all">
-                  Shedulles Info
-                </a>
-              </li>
-              
             </ul>
           </div>
         </div>
       </nav>
-      
+      <br></br>
 
-      
+      <div className="col" style={{ width: "800px" }}>
+        {/* Add the desired width to the div */}
+        <div className="card">
+          <img
+            src="./images/admin/Transport.jpg"
+            height="350px"
+            width="100px"
+            className="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Shedule Management</h5>
+            <p class="card-text"></p>
+          </div>
+          <a type="button" class="btn btn-success" href="/add">
+            Add Shedule
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Issues;
+export default Schedule;

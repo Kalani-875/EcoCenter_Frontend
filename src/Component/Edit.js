@@ -75,7 +75,7 @@ function EditShedulles(_userId) {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#" style={{ color: "red" }}>
-          Eco-Center
+            LSR
           </a>
           <button
             className="navbar-toggler"
@@ -91,13 +91,13 @@ function EditShedulles(_userId) {
           <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/Home">
+                <a className="nav-link" href="/Schedule">
                   Home <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/all">
-                  Schedulles Details
+                  Shedulles Details
                 </a>
               </li>
             </ul>
@@ -115,13 +115,13 @@ function EditShedulles(_userId) {
               <form onSubmit={updateShedulles}>
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="name">Schedule Contact</label>
+                    <label for="name">Shedule Contact</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Sctact"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule Contact"
+                      placeholder="Enter Shedule Contact"
                       value={Sctact}
                       onChange={(e) => {
                         setSctact(e.target.value);
@@ -132,13 +132,13 @@ function EditShedulles(_userId) {
 
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="vname">Schedule Address</label>
+                    <label for="vname">Shedule Address</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Sadres"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule Address"
+                      placeholder="Enter Shedule Address"
                       value={Sadres}
                       onChange={(e) => {
                         setSadres(e.target.value);
@@ -149,13 +149,13 @@ function EditShedulles(_userId) {
 
                 <div className="form-group">
                   <MDBCol md="6">
-                    <label for="vname">Schedule City</label>
+                    <label for="vname">Shedule City</label>
                     <input
                       type="text"
                       className="form-control"
                       id="Scity"
                       aria-describedby="emailHelp"
-                      placeholder="Enter Schedule City"
+                      placeholder="Enter Shedule City"
                       value={Scity}
                       onChange={(e) => {
                         setScity(e.target.value);
@@ -167,13 +167,13 @@ function EditShedulles(_userId) {
                 <div className="form-group">
                   <MDBRow>
                     <MDBCol md="6">
-                      <label for="vprice">Schedule Date</label>
+                      <label for="vprice">Shedule Date</label>
                       <input
                         type="text"
                         className="form-control"
                         id="Sdate"
                         aria-describedby="emailHelp"
-                        placeholder="Enter Schedule Date"
+                        placeholder="Enter Shedule Date"
                         value={Sdate}
                         onChange={(e) => {
                           setSdate(e.target.value);
