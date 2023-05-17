@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import axios from "axios";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import {
@@ -13,7 +13,8 @@ import {
   MDBRadio,
 } from "mdb-react-ui-kit";
 import { get } from "lodash";
-import { useParams } from "react-router-dom";
+import { useParams,useHistory } from "react-router-dom";
+
 
 function EditShedulles(_userId) {
   const [Shedulles, setShedulles] = useState(["Shedulles"]);
@@ -22,6 +23,7 @@ function EditShedulles(_userId) {
   const [Scity, setScity] = useState("Scity");
   const [Sdate, setSdate] = useState("Sdate");
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getShedullesDetails();
@@ -48,16 +50,24 @@ function EditShedulles(_userId) {
       Scity,
       Sdate,
     };
+
+   
+
     axios
       .put(`http://localhost:8070/Shedulles/update/${params.id}`, updateShedulles)
       .then((res) => {
         alert("Customer Details Updated");
 
         setShedulles(res.data);
+        
       })
       .catch((err) => {
         alert(err.message);
+        
+        history.push('/all'); 
       });
+      
+      
   }
 
   return (
