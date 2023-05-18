@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { Form, Input, Table } from "antd";
 import Header from "../../Common/header";
 import Footer from "../../Common/footer";
 
+const {Search}=Input;
 function vehicleAdmin() {
   const [vehicles, setVehicles] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState(null);
+  const [selectedId, setSelectedId] = useState("");
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [driverName, setDriverName] = useState("");
   const [driverCity, setDriverCity] = useState("");
   const [telephoneNo, setTelephoneNo] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
+  const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     fetchVehicles();
@@ -42,14 +52,26 @@ function vehicleAdmin() {
     }
   };
 
-  const deleteVehicle = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8070/Vehicle/${id}`);
-      fetchVehicles();
-    } catch (error) {
-      console.log("Failed to delete vehicle: ", error);
-    }
-  };
+  //const deleteVehicle = async (id) => {
+  //  try {
+  //    await axios.delete(`http://localhost:8070/Vehicle/${id}`);
+  //    fetchVehicles();
+  //  } catch (error) {
+  //    console.log("Failed to delete vehicle: ", error);
+  //  }
+  //};
+
+  function deleteVehicle(id) {
+    axios.delete(`http://localhost:8070/Vehicle/${id}`).then((res) => {
+      alert("Deleted");
+      //navigate("/all");
+      window.location.reload();
+
+      res.json().then((res) => {
+        console.warn(res);
+      });
+    });
+  }
 
   const clearForm = () => {
     setVehicleNumber("");
@@ -59,11 +81,59 @@ function vehicleAdmin() {
     setEmailAddress("");
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = () => {
+    axios
+      .get(`http://localhost:8070/Vehicle?search=${searchQuery}`)
+      .then((value) => {
+        setResults(value.data.vehicles);
+      })
+      .catch((err) => {
+        console.log("search vehicles failed " + err);
+      });
+  };
+
+  const columns = [
+    {
+      dataField: "vehicleNumber",
+      text: "Vehicle Number",
+    },
+    {
+      dataField: "driverName",
+      text: "Driver Name",
+    },
+    {
+      dataField: "driverCity",
+      text: "Driver City",
+    },
+    {
+      dataField: "telephoneNo",
+      text: "Telephone Number",
+    },
+    {
+      dataField: "emailAddress",
+      text: "Email Address",
+    },
+    {
+      text: "Actions",
+      formatter: (cellContent, record) => (
+        <>
+          
+          <Button variant="danger" onClick={() => deleteVehicle(record)}>
+            Delete
+          </Button>
+        </>
+      ),
+    },
+  ]
+
   return (
     <div>
       <Header />
       <div className="container">
         <h1>Vehicle Admin</h1>
+        <a href="/driverSchedule">Driver Schdeule</a>
         <button
           type="button"
           class="btn btn-primary"
@@ -72,6 +142,28 @@ function vehicleAdmin() {
         >
           Add Vehicle
         </button>
+        <input
+          type="text"
+          placeholder="Search by city..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Button variant="primary" onClick={handleSearch}>
+          Search
+        </Button>
+
+        <Search
+          placeholder="input search text"
+          onChange={(e) => setSearchText(e.target.value)}
+          style={{ width: 200 }}
+          className="search-input"
+        />
+        <Table
+        columns={columns}
+        dataSource={vehicles.filter((vehicles) =>
+          vehicles.driverCity.toLowerCase().includes(searchText.toLowerCase())
+        )}
+      />
 
         <div
           class="modal fade"

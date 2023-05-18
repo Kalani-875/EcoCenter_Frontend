@@ -13,8 +13,8 @@ import React from 'react';
 import AllShedulles from "./Component/Allshedulle";
 import AddShedullesinfo from "./Component/Addshedulle";
 import EditShedulles from './Component/Edit'
-import issues from "./Component/issues";
 import Issues from "./Component/issues";
+import DriverSchedule from "./Component/Vehicle/driverSchedule"
 
 
 
@@ -26,6 +26,7 @@ function App() {
     <Route path = "/add" element ={<AddShedullesinfo/>} />
     <Route path = "/schedule" element = {<Schedule/>} />
     <Route path = "/vehicleAdmin" element = {<VehicleAdmin/>} />
+    <Route path = "/driverSchedule" element = {<DriverSchedule/>} />
     <Route path = "/all" element = {<AllShedulles/>} />
     <Route path = "/vehicles" element = {<CusPackages/>} />
     <Route path = "/TransRepo" element = {<Transreport/>} />
@@ -33,6 +34,7 @@ function App() {
      <Route path = "/Reg" element = {<Register/>} />
      <Route path = "/Update/:id" element = {<EditShedulles/>} />
      <Route path = "/issues" element = {<Issues />} />
+     
 
 
     </Routes>
