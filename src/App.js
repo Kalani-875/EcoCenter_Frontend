@@ -2,7 +2,7 @@
 import {BrowserRouter as Router, Route , Routes} from "react-router-dom"
 import Cushome from "./Component/CHome/home";
 import Schedule from "./Component/Schedule";
-import VehicleAdmin from "./Component/Vehicle/vehicleAdmin";
+import VehicleList from "./Component/Vehicle/vehicleList";
 
 import CusPackages from './Component/CHome/packages';
 import Login from "./Component/auth/Login";
@@ -25,7 +25,7 @@ function App() {
     <Route path = "/" element ={<Cushome/>} />
     <Route path = "/add" element ={<AddShedullesinfo/>} />
     <Route path = "/schedule" element = {<Schedule/>} />
-    <Route path = "/vehicleAdmin" element = {<VehicleAdmin/>} />
+    <Route path = "/vehicleList" element = {<VehicleList/>} />
     <Route path = "/driverSchedule" element = {<DriverSchedule/>} />
     <Route path = "/all" element = {<AllShedulles/>} />
     <Route path = "/vehicles" element = {<CusPackages/>} />

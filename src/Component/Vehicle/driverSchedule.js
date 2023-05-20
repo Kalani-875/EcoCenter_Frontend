@@ -1,465 +1,163 @@
-import { Button, Form, Input, Modal, Table } from "antd";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { DownloadOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
+import Header from "../../Common/header";
+import Footer from "../../Common/footer";
 
-const { Search } = Input;
+// const { Search } = Input;
+export default function AllShedulles() {
+  const navigate = useNavigate();
 
-const driverSchedule = () => {
-  const [vehicles, setVehicles] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRecord, setSelectedRecord] = useState(null);
-  const [form] = Form.useForm();
-  const [vehicleNumber, setVehicleNumber] = useState("");
-  const [driverName, setDriverName] = useState("");
-  const [driverCity, setDriverCity] = useState("");
-  const [telephoneNo, setTelephoneNo] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
-  const [selectedId, setSelectedId] = useState("");
-  const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
+  const [Shedulles, setShedulles] = useState([]);
+
   const [searchText, setSearchText] = useState("");
-  const [results, setResults] = useState([]);
+  const [value, setValue] = useState("");
+  const [tableFilter, setTableFilter] = useState([]);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = async () => {
-    const data = {
-      vehicleNumber,
-      driverName,
-      driverCity,
-      telephoneNo,
-      emailAddress,
-    };
-    await axios
-      .post("http://localhost:8070/Vehicle", data)
-      .then((value) => {})
-      .catch((err) => {
-        console.log("add vehicle failed " + err);
-      });
-
-    await axios
-      .get("http://localhost:8070/Vehicle/0/0")
-      .then((value) => {
-        setVehicles(value.data.vehicles);
-      })
-      .catch((err) => {
-        console.log("get vehicles failed " + err);
-      });
-    setIsModalOpen(false);
-  };
-
-  const update = async () => {
-    const data = {
-      vehicleNumber,
-      driverName,
-      driverCity,
-      telephoneNo,
-      emailAddress,
-    };
-    await axios
-      .put("http://localhost:8070/Vehicle" + selectedId, data)
-      .then((value) => {})
-      .catch((err) => {
-        console.log("update vehicle failed " + err);
-      });
-
-    await axios
-      .get("http://localhost:8070/Vehicle/0/0")
-      .then((value) => {
-        setVehicles(value.data.vehicles);
-      })
-      .catch((err) => {
-        console.log("get vehicles failed " + err);
-      });
-    setUpdateModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-    setUpdateModalOpen(false);
+  const filterData = (e) => {
+    if (e.target.value !== "") {
+      setValue(e.target.value);
+      const filterTable = Shedulles.filter((o) =>
+        Object.keys(o).some((k) =>
+          String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())
+        )
+      );
+      setTableFilter([...filterTable]);
+    } else {
+      setValue(e.target.value);
+      setShedulles([...Shedulles]);
+    }
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8070/Vehicle/all")
-      .then((value) => {
-        setVehicles(value.data.vehicles);
-      })
-      .catch((err) => {
-        console.log("get vehicles failed " + err);
-      });
+    function getShedulles() {
+      axios
+        .get("http://localhost:8070/Shedulles/")
+        .then((res) => {
+          setShedulles(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+
+    getShedulles();
   }, []);
-  /*
-  const generatePdf = () => {
-    const doc = new jsPDF();
-    autoTable(doc, {
-      columns: [
-        { header: "Vehicle Number", dataKey: "vehicleNumber" },
-        { header: "Driver Name", dataKey: "driverName" },
-        { header: "Driver City", dataKey: "driverCity" },
-        { header: "Telephone Number", dataKey: "telephoneNo" },
-        { header: "Email Address", dataKey: "emailAddress" },
-      ],
-      body: vehicles.map((vehicle) => ({
-        vehicleNumber: vehicle.vehicleNumber,
-        driverName: vehicle.driverName,
-        driverCity: vehicle.driverCity,
-        telephoneNo: vehicle.telephoneNo,
-        emailAddress: vehicle.emailAddress,
-      })),
-    });
-    doc.save("vehicles.pdf");
-  };*/
 
-  const columns = [
-    {
-      title: "Vehicle Name",
-      dataIndex: "vehicleNumber",
-      key: "vehicleNumber",
-    },
-    {
-      title: "Driver Name",
-      dataIndex: "driverName",
-      key: "driverName",
-    },
-    {
-      title: "Driver City",
-      dataIndex: "driverCity",
-      key: "driverCity",
-    },
-    {
-      title: "Telephone Number",
-      dataField: "telephoneNo",
-      key: "telephoneNo",
-    },
-    {
-      title: "Email Address",
-      dataField: "emailAddress",
-      text: "emailAddress",
-    },
-    {
-      title: "Update",
-      key: "update",
-      dataIndex: "update",
-      render: (record) => (
-        <>
-          <Button
-            onClick={async (e) => {
-              setSelectedRecord(record);
-              setVehicleNumber(record.vehicleNumber);
-              setDriverName(record.driverName);
-              setDriverCity(record.driverCity);
-              setTelephoneNo(record.telephoneNo);
-              setEmailAddress(record.emailAddress);
-              setSelectedId(record._id);
-              form.setFieldsValue({
-                email: emailAddress,
-                "vehicle-number": vehicleNumber,
-                "driver-city": driverCity,
-                "driver-name": driverName,
-                telephoneNo: telephoneNo,
-              });
+  function deleteShedulles(userId) {
+    axios
+      .delete(`http://localhost:8070/Shedulles/delete/${userId}`)
+      .then((res) => {
+        alert("Deleted");
+        //navigate("/all");
+        window.location.reload();
 
-              setUpdateModalOpen(true);
-            }}
-            key={"update"}
-          >
-            Update
-          </Button>
-        </>
-      ),
-    },
-    {
-      title: "Delete",
-      key: "delete",
-      dataIndex: "delete",
-      render: (record) => (
-        <>
-          <Button
-            danger
-            type="primary"
-            key={"delete"}
-            onClick={async () => {
-              Modal.confirm({
-                title: "Confirm",
-                content: "Are you sure you want to delete this item?",
-                okText: "Yes",
-                okType: "danger",
-                cancelText: "No",
-                onOk: async () => {
-                  await axios.delete(
-                    "http://localhost:8070/Vehicle/" + record._id
-                  );
-                  await axios
-                    .get("http://localhost:8070/Vehicle/0/0")
-                    .then((value) => {
-                      setVehicles(value.data.vehicles);
-                    })
-                    .catch((err) => {
-                      console.log("get vehicles failed " + err);
-                    });
-                },
-              });
-            }}
-          >
-            Delete
-          </Button>
-        </>
-      ),
-    },
-  ];
-/*
-  const handleEdit = (record) => {
-    setSelectedRecord(record);
-    setSelectedId(record.id);
-    setVehicleNumber(record.vehicleNumber);
-    setDriverName(record.driverName);
-    setDriverCity(record.driverCity);
-    setTelephoneNo(record.telephoneNo);
-    setEmailAddress(record.emailAddress);
-    setUpdateModalOpen(true);
-  };
-
-  const handleDelete = async (record) => {
-    await axios
-      .delete("http://localhost:8070/Vehicle/" + record.id)
-      .then((value) => {})
-      .catch((err) => {
-        console.log("delete vehicle failed " + err);
+        res.json().then((res) => {
+          console.warn(res);
+        });
       });
-    await axios
-      .get("http://localhost:8070/Vehicle/0/0")
-      .then((value) => {
-        setVehicles(value.data.vehicles);
-      })
-      .catch((err) => {
-        console.log("get vehicles failed " + err);
-      });
-  };
-  */
+  }
 
   return (
-    <div>
-      <h1
-          style={{
-            color: "black",
-            fontFamily: "Times new roman",
-            fontWeight: "bold",
-          }}
-        >
-          DashBoard {">"} Branches
-        </h1>
-        
-        <Search
-          placeholder="input search text"
-          onChange={(e) => setSearchText(e.target.value)}
-          style={{ width: 200 }}
-          className="search-input"
-        />
-      <Button type="primary" onClick={showModal} style={{ marginBottom: 16 }}>
-        Add Vehicle
-      </Button>
-      <Table
-        columns={columns}
-        dataSource={vehicles.filter((vehicle) =>
-          vehicle.brLocation.toLowerCase().includes(searchText.toLowerCase())
-        )}
-      />
-      <Modal
-      width={1000}
-      open={isModalOpen}
-      style={{ backgroundColor: "grey", borderRadius: 5 }}
-        title="Add Vehicle"
-        visible={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <Form form={form} autoComplete="false">
-          <Form.Item
-            label="Vehicle Number"
-            name="vehicleNumber"
-            rules={[
-              {
-                required: true,
-                message: "Please input the vehicle number!",
-              },
-            ]}
-          >
-            <Input
-              value={vehicleNumber}
-              onChange={(e) => setVehicleNumber(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Driver Name"
-            name="driverName"
-            rules={[
-              {
-                required: true,
-                message: "Please input the driver name!",
-              },
-            ]}
-          >
-            <Input
-              value={driverName}
-              onChange={(e) => setDriverName(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Driver City"
-            name="driverCity"
-            rules={[
-              {
-                required: true,
-                message: "Please input the driver cuty!",
-              },
-            ]}
-          >
-            <Input
-              value={driverCity}
-              onChange={(e) => setDriverCity(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Telephone Number"
-            name="telephoneNumber"
-            rules={[
-              {
-                required: true,
-                message: "Please input the telephone number!",
-              },
-              {
-                pattern: /^[0-9]{10}$/,
-                message: "Please enter a valid 10-digit telephone number!",
-              },
-            ]}
-          >
-            <Input
-              value={telephoneNo}
-              onChange={(e) => setTelephoneNo(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="emailAddress"
-            rules={[
-              {
-                required: true,
-                message: "Please input the email address!",
-              },
-              {
-                type: "email",
-                message: "Please enter a valid email address!",
-              },
-            ]}
-          >
-            <Input
-              value={emailAddress}
-              onChange={(e) => setEmailAddress(e.target.value)}
-            />
-          </Form.Item>
-        </Form>
-      </Modal>
+    <div
+      style={{
+        position: "relative",
+      }}
+    >
+      <Header />
+      <div className="container">
+        <br />
+        <h2>Driver Schedule</h2>
+        <br></br>
+        <div class="container">
+          <div class="row justify-content-end align-items-start">
+            <div class="col-12">
+              <Button type="dashed">
+                <a href="/vehicleList">Vehicle List</a>
+              </Button>
+            </div>
+          </div>
 
-      <Modal
-      width={1000}
-      open={isUpdateModalOpen}
-      style={{ backgroundColor: "grey", borderRadius: 5 }}
-        title="Update Branch"
-        visible={isUpdateModalOpen}
-        onOk={update}
-        onCancel={handleCancel}
-      >
-        <Form form={form}>
-          <Form.Item
-            label="Vehicle Number"
-            name="vehicleNumber"
-            rules={[
-              {
-                required: true,
-                message: "Please input the vehicle number!",
-              },
-            ]}
-          >
-            <Input
-              value={vehicleNumber}
-              onChange={(e) => setVehicleNumber(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Driver Name"
-            name="driverName"
-            rules={[
-              {
-                required: true,
-                message: "Please input the driver name!",
-              },
-            ]}
-          >
-            <Input
-              value={driverName}
-              onChange={(e) => setDriverName(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Driver City"
-            name="driverCity"
-            rules={[
-              {
-                required: true,
-                message: "Please input the driver cuty!",
-              },
-            ]}
-          >
-            <Input
-              value={driverCity}
-              onChange={(e) => setDriverCity(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Telephone Number"
-            name="telephoneNumber"
-            rules={[
-              {
-                required: true,
-                message: "Please input the telephone number!",
-              },
-              {
-                pattern: /^[0-9]{10}$/,
-                message: "Please enter a valid 10-digit telephone number!",
-              },
-            ]}
-          >
-            <Input
-              value={telephoneNo}
-              onChange={(e) => setTelephoneNo(e.target.value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="emailAddress"
-            rules={[
-              {
-                required: true,
-                message: "Please input the email address!",
-              },
-              {
-                type: "email",
-                message: "Please enter a valid email address!",
-              },
-            ]}
-          >
-            <Input
-              value={emailAddress}
-              onChange={(e) => setEmailAddress(e.target.value)}
-            />
-          </Form.Item>
-        </Form>
-      </Modal>
+          <div class="container">
+            <div class="row justify-content-end align-items-start">
+              <div class="col-2">
+                <Button type="primary" className="btn-success">
+                  <a href="/TransRepo" style={{ textDecoration: "none" }}>
+                    Genarate Report
+                  </a>
+                </Button>
+                <hr />
+              </div>
+              <div class="row justify-content-end align-items-start">
+                <div class="col-2">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="search..."
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                    value={value}
+                    onChange={filterData}
+                  />
+                  {/* <Search
+                    placeholder="input search text"
+                    onChange={(e) => setSearchText(e.target.value)}
+                    style={{ width: 200 }}
+                    className="search-input"
+                  />
+                </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Contact</th>
+              <th scope="col">Address</th>
+              <th scope="col">City</th>
+              <th scope="col">Scheduled Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {value.length > 0
+              ? tableFilter.map((Shedulles, id) => (
+                  <tr key={id}>
+                    <td>{Shedulles.Sctact}</td>
+                    <td>{Shedulles.Sadres}</td>
+                    <td>{Shedulles.Scity}</td>
+                    <td>{Shedulles.Sdate}</td>
+
+                    <td>
+                      <Button type="primary" onClick={() => Shedulles._id}>
+                        <i className="far fa-trash-alt"></i>&nbsp;Notify
+                      </Button>
+                    </td>
+                  </tr>
+                ))
+              : Shedulles.map((Shedulles, id) => (
+                  <tr key={id}>
+                    <td>{Shedulles.Sctact}</td>
+                    <td>{Shedulles.Sadres}</td>
+                    <td>{Shedulles.Scity}</td>
+                    <td>{Shedulles.Sdate}</td>
+
+                    <td>
+                      &nbsp;
+                      <Button type="primary" onClick={() => Shedulles._id}>
+                        <i className="far fa-trash-alt"></i>&nbsp;Notify
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+          </tbody>
+        </table>
+      </div>
+      <Footer />
     </div>
   );
-};
-
-export default driverSchedule;
+}

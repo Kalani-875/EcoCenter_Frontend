@@ -42,7 +42,7 @@ function home() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/vehicleAdmin">
+                <a className="nav-link" href="/vehicleList">
                   Driver
                 </a>
               </li>
