@@ -7,6 +7,7 @@ import {
   MDBCol,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import { alignPropType } from "react-bootstrap/esm/types";
 
 function home() {
   return (
@@ -41,7 +42,7 @@ function home() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/vehicleAdmin">
+                <a className="nav-link" href="/vehicleList">
                   Driver
                 </a>
               </li>
@@ -76,35 +77,35 @@ function home() {
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="./images/img1.jpg"
+              src="./images/cleanSociety.jpg"
               class="d-block w-100"
               alt="..."
               background-size="cover"
               background-position="center top"
               width="100"
-              height="550"
+              height="650"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="./images/img2.jpg"
+              src="./images/cleanBeach.jpg"
               class="d-block w-100"
               alt="..."
               background-size="cover"
               background-position="center top"
               width="100%"
-              height="550"
+              height="650"
             />
           </div>
           <div class="carousel-item">
             <img
-              src="./images/img3.jpg"
+              src="./images/garbageCollecting.jpg"
               class="d-block w-100"
               alt="..."
               background-size="cover"
               background-position="center top"
               width="100%"
-              height="550"
+              height="650"
             />
           </div>
         </div>
@@ -133,52 +134,35 @@ function home() {
           <div class="row gx-5">
             <div class="col">
               <div class="p-3 border bg-light">
-                <h4>BEST PRICE GUARANTEE</h4>
+                <h4>Join Us in Creating a Cleaner and Greener World</h4>
                 <p>
-                  Tourism has witnessed some of the toughest price competition
-                  in today's world. Yet for all most customers do not treat, the
-                  price is The vital point in their decision making process.
-                  Although LSR Prices might not be the lowest in the
-                  Marketplace, customers will be rest assured that, They will
-                  get a service proportionate to the price they have paid, which
-                  will offer them a "Money's Worth " Experience.
+                At Eco Center, we are committed to preserving the environment and ensuring a sustainable future. We believe that keeping the environment clean is not only crucial for our well-being but also for the generations to come. By adopting eco-friendly practices and supporting those who clean the environment, we can make a significant impact on the health of our planet. Join us in our mission to create a cleaner and greener world.
                 </p>
               </div>
             </div>
             <div class="col">
               <div class="p-3 border bg-light">
-                <h4>TRUST AND SAFETY</h4>
+                <h4>Supporting Environmental Heroes: Recognizing Their Efforts</h4>
                 <p>
-                  Capability to offer its service with great confidence places
-                  LSR's customers on a foundation on which they would engage in
-                  activities / programmes based on built-up trust knowing that
-                  LSR will lay great emphasis on their safety through out the
-                  encounters.
+                One of the key ways we contribute to a cleaner environment is by actively supporting the individuals who dedicate their time and effort to cleaning and preserving our surroundings. These unsung heroes work tirelessly to ensure that our land, water, and air are free from pollutants and waste. We recognize and appreciate their invaluable contributions. By acknowledging their efforts, offering resources, and promoting their work, we strive to empower and uplift these environmental heroes. 
                 </p>
               </div>
             </div>
 
             <div class="col">
               <div class="p-3 border bg-light">
-                <h4>BEST TRAVEL AGENT</h4>
+                <h4>Preserving Life on Land: Safeguarding Biodiversity</h4>
                 <p>
-                  Being able to provide any tailor-made tour programme /
-                  activity with its own resources such as the Water Sports
-                  Centres, Adventure Bases,Fleet of Vehicles etc. puts LSR in a
-                  unique position.
+                Preserving life on land is of utmost importance to us. The land ecosystems harbor a diverse range of plant and animal species, contributing to the delicate balance of our planet's biodiversity. By protecting and restoring habitats, we can safeguard the unique life forms that depend on them. At Eco Center, we actively support conservation initiatives that focus on creating wildlife corridors, establishing protected areas, and engaging local communities. Together, we can ensure the continued existence of endangered species and the sustainability of our land ecosystems.
                 </p>
               </div>
             </div>
 
             <div class="col">
               <div class="p-3 border bg-light">
-                <h4>TRAVEL INSURANCE</h4>
+                <h4>Empowering Individuals: Making a Positive Impact on the Environment</h4>
                 <p>
-                  From the very beginning The LSR has been helping travelers in
-                  travel with responsibility. In order to minimize the risks can
-                  be occurred during the tour, LSR provides you a range of
-                  travel insurance options specifically designed to give you
-                  peace of mind when you travel with us.
+                We firmly believe that each individual has the power to make a positive impact on the environment. Whether it's through small everyday actions or active participation in community initiatives, everyone can contribute to a cleaner and safer world. We encourage you to join us in practicing responsible waste management, conserving resources, and adopting sustainable lifestyles. By spreading awareness about the importance of environmental preservation and advocating for policy changes, we can create a collective movement towards a brighter and greener future for all. Together, let's keep the environment clean, support those who clean it, and ensure the safety of life on land.
                 </p>
               </div>
             </div>
@@ -187,8 +171,8 @@ function home() {
         <br></br>
         <br></br>
         <div className="container">
-          <h2 align="center">TOURISM IS EVERYWHERE</h2>
-          <h4 align="center">MAKE YOUR NEXT VACATION WITH US</h4>
+          <h2 align="center">Clean Earth, Stronger Future</h2>
+          <h4 align="center">Join the Green Revolution!</h4>
         </div>
 
         <br></br>
