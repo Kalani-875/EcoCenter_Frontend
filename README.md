@@ -20,53 +20,46 @@ Member 4 -  IT20154462 - IT20154462@my.sliit.lk - Sachintha Gayashan W.K.
 
 [EcoCenter_Backend](https://github.com/it21102714/EcoCenter_Backend.git) 
 
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project serves as the frontend for our application, providing an interactive user interface. It is built using Bootstrap, Ant Design (antd), and Material-UI frameworks. The frontend runs on port 3000 and requires Node.js and npm to be installed.
 
-## Available Scripts
+Clone the repository to your local machine.
 
-In the project directory, you can run:
+Open the terminal and navigate to the project directory.
 
-### `npm start`
+Install the dependencies by running the following command: `npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Start the frontend development server by entering the following command in the terminal: `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This will automatically open the application in your default browser.
 
-### `npm test`
+## Configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The frontend server is configured to run on port 3000. If you want to change the port, modify the package.json file, specifically the "scripts" section.
 
-### `npm run build`
+## Frameworks and Libraries
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The frontend project is built using the following frameworks and libraries:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Bootstrap](https://getbootstrap.com/)
+[Ant Design (antd)](https://ant.design/)
+[Material-UI](https://mui.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Feel free to explore their respective documentation for more information on using these frameworks and libraries.
 
-### `npm run eject`
+## Folder Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The folder structure of the frontend project is as follows:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-
-
+├── public/                  # Public assets and HTML template
+├── src/                     # Source code
+│   ├── Common/              # Reusable components
+│   ├── Component/           # Individual pages or views
+│   ├── App.js               # Main application component
+│   ├── index.js             # Entry point
+│   └── ...                  # Other files and directories
+├── .gitignore               # Git ignore file
+├── package-lock.json             # Project configuration and dependencies
+├── package.json             # Project configuration and dependencies
+└── README.md                # This file
