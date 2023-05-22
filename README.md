@@ -1,6 +1,6 @@
 # EcoCenter_Frontend
 
-## Group #28
+## Year 3 Semester 1 - ITPM Project - Group #28
 
 ## Members' GitHub Usernames, Student Email Addresses, and Names
 
