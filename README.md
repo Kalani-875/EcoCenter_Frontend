@@ -55,13 +55,23 @@ Feel free to explore their respective documentation for more information on usin
 The folder structure of the frontend project is as follows:
 
 ├── public/                  # Public assets and HTML template
+
 ├── src/                     # Source code
+
 │   ├── Common/              # Reusable components
+
 │   ├── Component/           # Individual pages or views
+
 │   ├── App.js               # Main application component
+
 │   ├── index.js             # Entry point
+
 │   └── ...                  # Other files and directories
+
 ├── .gitignore               # Git ignore file
-├── package-lock.json             # Project configuration and dependencies
+
+├── package-lock.json        # Project configuration and dependencies
+
 ├── package.json             # Project configuration and dependencies
+
 └── README.md                # This file
