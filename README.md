@@ -43,7 +43,9 @@ The frontend server is configured to run on port 3000. If you want to change the
 The frontend project is built using the following frameworks and libraries:
 
 [Bootstrap](https://getbootstrap.com/)
+
 [Ant Design (antd)](https://ant.design/)
+
 [Material-UI](https://mui.com/)
 
 Feel free to explore their respective documentation for more information on using these frameworks and libraries.
