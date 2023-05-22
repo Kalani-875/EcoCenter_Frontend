@@ -36,7 +36,7 @@ This will automatically open the application in your default browser.
 
 ## Configuration
 
-The frontend server is configured to run on port 3000. If you want to change the port, modify the package.json file, specifically the "scripts" section.
+The frontend server is configured to run on port 3000.
 
 ## Frameworks and Libraries
 
